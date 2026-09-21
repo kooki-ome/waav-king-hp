@@ -1,10 +1,25 @@
+import { Route, Routes } from 'react-router-dom'
+import Footer from './components/Footer.jsx'
+import Header from './components/Header.jsx'
+import Home from './pages/Home.jsx'
+import Placeholder from './pages/Placeholder.jsx'
+
 function App() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-4 px-4 text-center">
-      <p className="text-sm tracking-widest text-gray-500">Since 1996</p>
-      <h1 className="text-3xl font-bold">Business Contest KING</h1>
-      <p className="text-gray-600">学生による学生のためのビジネスコンテスト</p>
-    </main>
+    <div className="min-h-screen bg-white">
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<Placeholder title="KINGについて" />} />
+        <Route path="/contest" element={<Placeholder title="コンテスト" />} />
+        <Route path="/past" element={<Placeholder title="過去のコンテストについて" />} />
+        <Route path="/recruit" element={<Placeholder title="秋新歓特設ページ" />} />
+        <Route path="/sponsorship" element={<Placeholder title="協賛企業の皆様" />} />
+        <Route path="/contact" element={<Placeholder title="お問い合わせ" />} />
+        <Route path="/law" element={<Placeholder title="特定商取引に基づく対応" />} />
+      </Routes>
+      <Footer />
+    </div>
   )
 }
 
