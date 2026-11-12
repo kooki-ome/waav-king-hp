@@ -5,6 +5,7 @@ import ScrollFlow from '../components/ScrollFlow.jsx'
 import ScrollReveal from '../components/ScrollReveal.jsx'
 import PillButton from '../components/ui/PillButton.jsx'
 import SectionLabel from '../components/ui/SectionLabel.jsx'
+import WinterBanner from '../components/WinterBanner.jsx'
 
 // ※ 文言は現行サイト（26代）のもの。新代の情報が届き次第差し替える。
 const mvv = [
@@ -82,6 +83,9 @@ function Home() {
   return (
     <main>
       <Hero />
+
+      {/* 次のコンテスト（開催期間を過ぎると自動で消える） */}
+      <WinterBanner />
 
       {/* ABOUT: 赤ベタ */}
       <section className="bg-king px-6 py-24 text-white lg:px-16 lg:py-32">

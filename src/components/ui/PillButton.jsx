@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom'
 
 // ピル型ボタン。テキストと矢印の間に点線の仕切り。
 // variant: king（赤地・白字）/ white（白地・赤字）/ outline（透明・白枠）
-function PillButton({ to, href, variant = 'king', className = '', children }) {
+// href を渡すと普通のリンクになる。newTab={false} で同じタブのまま開く（サイト内の静的ページ用）
+function PillButton({ to, href, newTab = true, variant = 'king', className = '', children }) {
   const base =
     'group inline-flex items-center gap-4 rounded-full py-3.5 pl-7 pr-5 text-[15px] font-bold tracking-wide transition-colors duration-500'
   const variants = {
@@ -22,7 +23,7 @@ function PillButton({ to, href, variant = 'king', className = '', children }) {
   )
   if (href) {
     return (
-      <a href={href} target="_blank" rel="noreferrer" className={cls}>
+      <a href={href} {...(newTab ? { target: '_blank', rel: 'noreferrer' } : {})} className={cls}>
         {inner}
       </a>
     )

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import PillButton from './ui/PillButton.jsx'
+import { winterStatus } from '../lib/winter.js'
+import { WinterHeaderButton } from './WinterBanner.jsx'
 
 const navItems = [
   { to: '/about', label: 'KINGについて' },
@@ -39,9 +41,14 @@ function Header() {
               {item.label}
             </NavLink>
           ))}
-          <PillButton to="/recruit" className="!py-2.5 !pl-5 !pr-4 text-sm">
-            秋新歓
-          </PillButton>
+          {/* Winter の開催期間中は Winter を、それ以外は秋新歓を出す */}
+          {winterStatus() ? (
+            <WinterHeaderButton className="!py-2.5 !pl-5 !pr-4 text-sm" />
+          ) : (
+            <PillButton to="/recruit" className="!py-2.5 !pl-5 !pr-4 text-sm">
+              秋新歓
+            </PillButton>
+          )}
         </nav>
 
         <button
@@ -72,7 +79,7 @@ function Header() {
             </NavLink>
           ))}
           <div onClick={() => setOpen(false)}>
-            <PillButton to="/recruit">秋新歓特設ページ</PillButton>
+            {winterStatus() ? <WinterHeaderButton /> : <PillButton to="/recruit">秋新歓特設ページ</PillButton>}
           </div>
         </nav>
       ) : null}
