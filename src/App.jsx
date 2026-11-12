@@ -1,12 +1,27 @@
-import { Route, Routes } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Footer from './components/Footer.jsx'
 import Header from './components/Header.jsx'
+import Loading from './components/Loading.jsx'
 import Home from './pages/Home.jsx'
 import Placeholder from './pages/Placeholder.jsx'
+import { ScrollTrigger } from './lib/motion.js'
+
+// ページ遷移のたびに先頭へ戻し、ScrollTrigger の位置を計算し直す
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    ScrollTrigger.refresh()
+  }, [pathname])
+  return null
+}
 
 function App() {
   return (
     <div className="min-h-screen bg-white">
+      <Loading />
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

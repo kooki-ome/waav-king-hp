@@ -10,7 +10,7 @@ function Footer() {
             alt="Business Contest KING 実行委員会 ロゴ"
             className="mb-6 w-full max-w-xl brightness-0 invert"
           />
-          <p className="font-serif-jp text-sm leading-7">
+          <p className="text-sm leading-7">
             Business Contest KING 実行委員会
             <br />
             〒153-8902
@@ -48,7 +48,7 @@ function Footer() {
               </svg>
             </a>
           </div>
-          <div className="flex flex-col gap-2 font-serif-jp text-sm">
+          <div className="flex flex-col gap-2 text-sm">
             <Link to="/law" className="underline-offset-4 hover:underline">
               特定商取引に基づく対応
             </Link>

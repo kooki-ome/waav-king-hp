@@ -1,16 +1,44 @@
 @import "tailwindcss";
 
+/* ブランドカラーと書体（Tailwind のユーティリティとして bg-king / text-ink / font-en などで使える） */
+@theme {
+  --color-king: #b10013;
+  --color-king-dark: #7f000d;
+  --color-ink: #1a1a1a;
+  --color-ink-soft: #3e4045;
+  --color-paper: #f5f3f0;
+  --font-jp: "Zen Kaku Gothic Antique", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-en: "Inter", "Zen Kaku Gothic Antique", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  color: #000;
+  color: var(--color-ink-soft);
   background: #fff;
-  font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", sans-serif;
+  font-family: var(--font-jp);
+  font-feature-settings: "palt";
+  -webkit-font-smoothing: antialiased;
 }
 
-.font-display {
-  font-family: Oswald, "Hiragino Sans", sans-serif;
+/* 見出し・英字用 */
+.font-jp {
+  font-family: var(--font-jp);
+}
+.font-en {
+  font-family: var(--font-en);
 }
 
-.font-serif-jp {
-  font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+/* ScrollReveal の子要素は JS で表示するまで隠す（reduced-motion のときは表示） */
+.scroll-reveal > * {
+  opacity: 0;
+  will-change: transform, opacity, filter;
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal > * {
+    opacity: 1;
+  }
 }
